@@ -10,7 +10,8 @@
 	    "body": "This is an example of Dan's fantastic new adapt-blinds component",
 	    "_height": 400,
 	    "_setCompletionOn": "allItems",
-	    "_items": [{
+	    "_items": [
+				{
 	        "body": "It's not who I am underneath, but what I do that defines me.",
 	        "bodyReduced": "Reduced text.",
 	        "_top": 100,
