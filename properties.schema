@@ -76,31 +76,31 @@
           "_top": {
             "type": "string",
             "required": false,
-            "title": "Item Position - Top",
+            "title": "Position - Top",
             "inputType": "Text",
             "validators": [],
-            "help": "The vertical position of the caption. Can be given as a number or percentage."
+            "help": "The vertical position of the text. Can be given as a number or percentage."
           },
           "_left": {
             "type": "string",
             "required": false,
-            "title": "Item Position - Left",
+            "title": "Position - Left",
             "inputType": "Text",
             "validators": [],
-            "help": "The horizontal position of the caption. Can be given as a number or percentage."
+            "help": "The horizontal position of the text. Can be given as a number or percentage."
           },
           "_width": {
             "type": "string",
             "required": false,
-            "title": "Item Width",
+            "title": "Text Width",
             "inputType": "Text",
             "validators": [],
-            "help": "The width of the caption. Can be given as a number or percentage."
+            "help": "The width of the text. Can be given as a number or percentage."
           },
           "_graphic": {
             "type": "object",
             "required": false,
-            "title": "Item Audio",
+            "title": "Graphic",
             "properties": {
               "_src": {
                 "type": "string",
@@ -108,14 +108,13 @@
                 "default": "",
                 "title": "Select the image for this item",
                 "inputType": "Asset:image",
-                "validators": ["required"],
-                "help": ""
+                "validators": ["required"]
               },
               "ariaLabel": {
                 "type": "string",
                 "required": false,
                 "default": "",
-                "title": "Item Aria Label",
+                "title": "Image Aria Label",
                 "inputType": "Text",
                 "validators": [],
                 "translatable": true
@@ -125,16 +124,15 @@
           "_audio": {
             "type": "object",
             "required": false,
-            "title": "Item Audio",
+            "title": "Audio",
             "properties": {
               "_src": {
                 "type": "string",
                 "required": false,
                 "default": "",
-                "title": "Audio",
+                "title": "Select the audio for this item",
                 "inputType": "Asset:audio",
-                "validators": [],
-                "help": "Optional audio for this item"
+                "validators": []
               }
             }
           }
