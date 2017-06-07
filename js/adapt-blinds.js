@@ -5,114 +5,132 @@ define([
 
 	var Blinds = ComponentView.extend({
 
+    events: {
+        'mouseenter .blinds-item': 'onMouseEnter',
+        'mouseleave .blinds-item': 'onMouseLeave'
+    },
+
 		preRender: function() {
 			this.listenTo(Adapt, "device:resize", this.calculateWidths, this);
+      this.listenTo(Adapt, "device:changed", this.setDeviceSize, this);
+      this.listenTo(Adapt, "audio:changeText", this.replaceText);
+
 			this.setDeviceSize();
 		},
 
+    setDeviceSize: function() {
+			if (Adapt.device.screenSize === "large") {
+				this.$el.addClass("desktop").removeClass("mobile");
+				this.model.set("_isDesktop", true);
+			} else {
+				this.$el.addClass("mobile").removeClass("desktop");
+				this.model.set("_isDesktop", false)
+			}
+		},
+
 		postRender: function() {
+      this.renderState();
+
 			this.$(".blinds-inner").imageready(_.bind(function() {
-				this.setupBlinds();
 				this.setReadyStatus();
 			}, this));
 
+      this.setupBlinds();
+
+      if (Adapt.course.get('_audio') && Adapt.course.get('_audio')._reducedTextisEnabled && this.model.get('_audio') && this.model.get('_audio')._reducedTextisEnabled) {
+          this.replaceText(Adapt.audio.textSize);
+      }
 		},
 
 		setupBlinds: function() {
 			if(!this.model.has("_items") || !this.model.get("_items").length) return;
+
 			this.model.set("_itemCount", this.model.get("_items").length);
 			this.model.set("_active", true);
+
 			this.calculateWidths();
 			this.setupEventListeners();
 		},
 
-		setupEventListeners: function() {
-			if (!this.model.get("_isDesktop")) return;
-
-			var that = this;
-			var $items = this.$(".blinds-item");
-			var _items = this.model.get("_items");
-			var wItem = this.itemWidth;
-			var animationTime = 400;
-			var captionDelay = this.model.has("captionDelay") ? this.model.get("captionDelay") : 800;
-			var expandBy = this.model.get("_expandBy") || 2;
-			var count = 0;
-			var currentItem;
-			var queue = [];
-
-			$items.on({
-				mouseenter: function() {
-					currentItem = this;
-
-
-					var $this = $(this);
-					var itemIndex = $this.index();
-					var _item = _items[itemIndex];
-					var $siblings = $this.siblings();
-					var $p = $this.find("p");
-					var wItemNew = wItem * expandBy;
-					var wSiblingsNew = wItem - ((wItemNew - wItem) / $siblings.length);
-					var currTop = 10;
-
-					$this.outerWidth(wItemNew);
-
-					that.setStage(itemIndex);
-
-					$p.each(function(i, el) {
-						(function(i, el) {
-							var t = animationTime + (i * captionDelay);
-							var caption = _item._captions[i];
-							var left = caption.left || _item.left || 0;
-							var top = caption.top;
-							if (!top && i === 0) top = 0;
-							var width = caption.width || wItem * expandBy + "px";
-							queue[i] = setTimeout(function() {
-								if (top === undefined) {
-									top = $p.eq(i - 1).outerHeight() + currTop + 10;
-								}
-								currTop = parseInt(top);
-								$(el).css({
-									opacity: 1,
-									top: top,
-									left: left,
-									maxWidth: width
-								});
-							}, t);
-						})(i, el);
-					});
-					$siblings.outerWidth(wSiblingsNew);
-				},
-				mouseleave: function() {
-					for (var i = 0; i < queue.length; i++) {
-						clearTimeout(queue[i]);
-					}
-					currentItem = null;
-					count = 0;
-					var $this = $(this);
-					$this.outerWidth(wItem);
-					$this.find("p").css("opacity", 0);
-					$this.siblings().outerWidth(wItem);
-				}
-			});
-
-			this.completionEvent = this.model.get("_setCompletionOn") || "allItems";
-
-			if (this.completionEvent !== "inview" && this.model.get("_items").length > 1) {
-				this.on(this.completionEvent, _.bind(this.onCompletion, this));
-			} else {
-				this.$(".component-widget").on("inview", _.bind(this.inview, this));
-			}
-		},
-
-		calculateWidths: function() {
-			if (this.model.get("height")) this.$(".blinds-item").height(this.model.get("height"));
+    calculateWidths: function() {
+			if (this.model.get("_height")) this.$(".blinds-item").height(this.model.get("_height"));
 			var wTotal = this.$(".blinds-container").width();
 			var $items = this.$(".blinds-item");
-			var margin = parseInt($items.css("marginRight"));
-			var wItem = (wTotal / $items.length) - (margin * 2);
+			var wItem = wTotal / $items.length;
 			this.itemWidth = wItem;
 			$items.outerWidth(wItem);
+      this.model.set("_width", this.$(".blinds-container").width());
 		},
+
+    onMouseEnter: function(event) {
+      event.preventDefault();
+
+      var $items = this.$(".blinds-item");
+      var currentItem = $(event.currentTarget);
+			var _items = this.model.get("_items");
+			var wItem = this.itemWidth;
+
+      var captionDelay = this.model.has("captionDelay") ? this.model.get("captionDelay") : 800;
+      var wTotal = this.$(".blinds-container").width();
+
+      var itemIndex = currentItem.index();
+      var _item = _items[itemIndex];
+      var $siblings = currentItem.siblings();
+      var $p = currentItem.find(".blinds-text");
+      var wItemNew = wItem;
+      var wSiblingsNew = wItem - ((wItemNew - wItem) / $siblings.length);
+
+      var widthNormal = wTotal / $items.length;
+      var widthOpen = wTotal - (50 * $siblings.length);
+
+      wItemNew = widthOpen;
+
+      currentItem.outerWidth(widthOpen);
+
+      this.setStage(itemIndex);
+
+      var left = _item._left || 0;
+      var top = _item._top;
+      var width = _item._width || wItem + "px";
+
+      $p.css({
+        opacity: 1,
+        top: top,
+        left: left,
+        maxWidth: width
+      });
+
+      $siblings.outerWidth(50);
+
+      ///// Audio /////
+      if (Adapt.course.get('_audio') && Adapt.course.get('_audio')._isEnabled && this.model.has('_audio') && this.model.get('_audio')._isEnabled && Adapt.audio.audioClip[this.model.get('_audio')._channel].status==1) {
+        // Reset onscreen id
+        Adapt.audio.audioClip[this.model.get('_audio')._channel].onscreenID = "";
+        // Trigger audio
+        Adapt.trigger('audio:playAudio', _item._audio._src, this.model.get('_id'), this.model.get('_audio')._channel);
+      }
+      ///// End of Audio /////
+    },
+
+    onMouseLeave: function(event) {
+      event.preventDefault();
+
+      var currentItem = $(event.currentTarget);
+      var wItem = this.itemWidth;
+      var $p = currentItem.find(".blinds-text");
+      var $siblings = currentItem.siblings();
+
+      currentItem.outerWidth(wItem);
+      $p.css("opacity", 0);
+      $siblings.outerWidth(wItem);
+
+      ///// Audio /////
+      if (Adapt.course.get('_audio') && Adapt.course.get('_audio')._isEnabled && this.model.has('_audio') && this.model.get('_audio')._isEnabled) {
+          Adapt.trigger('audio:pauseAudio', this.model.get('_audio')._channel);
+      }
+      ///// End of Audio /////
+    },
+
 
 		setStage: function(stage) {
 			this.model.set("_stage", stage);
@@ -121,7 +139,6 @@ define([
 				var currentItem = this.getCurrentItem(stage);
 				currentItem._isVisited = true;
 			}
-
 			this.evaluateCompletion();
 		},
 
@@ -166,15 +183,30 @@ define([
 			}
 		},
 
-		setDeviceSize: function() {
-			if (Adapt.device.screenSize === "large") {
-				this.$el.addClass("desktop").removeClass("mobile");
-				this.model.set("_isDesktop", true);
-			} else {
-				this.$el.addClass("mobile").removeClass("desktop");
-				this.model.set("_isDesktop", false)
-			}
-		}
+    setupEventListeners: function() {
+      this.completionEvent = (!this.model.get('_setCompletionOn')) ? 'allItems' : this.model.get('_setCompletionOn');
+      if (this.completionEvent !== 'inview' && this.model.get('_items').length > 1) {
+        this.on(this.completionEvent, _.bind(this.onCompletion, this));
+      } else {
+        this.$('.component-widget').on('inview', _.bind(this.inview, this));
+      }
+		},
+
+    // Reduced text
+    replaceText: function(value) {
+      // If enabled
+      if (Adapt.course.get('_audio') && Adapt.course.get('_audio')._reducedTextisEnabled && this.model.get('_audio') && this.model.get('_audio')._reducedTextisEnabled) {
+        // Change each items body
+        for (var i = 0; i < this.model.get('_items').length; i++) {
+          if(value == 0) {
+            this.$('.blinds-text').eq(i).html(this.model.get('_items')[i].body).a11y_text();
+          } else {
+            this.$('.blinds-text').eq(i).html(this.model.get('_items')[i].bodyReduced).a11y_text();
+          }
+        }
+      }
+    }
+
 	});
 
 	Adapt.register("blinds", Blinds);

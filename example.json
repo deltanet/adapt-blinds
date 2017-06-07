@@ -9,61 +9,64 @@
 		"title": "Blinds",
 		"displayTitle": "Superheroes",
 		"body": "This is an example of Dan's fantastic new adapt-blinds component",
-		"_pageLevelProgress": {
-			"_isEnabled": true
-		},
-		"height": 400,
-		"_expandBy":2.8,
+		"_height": 400,
+		"_setCompletionOn": "allItems",
 		"_items": [
 			{
-				"src": "batman.jpg",
-				"_captions": [
-					{
-						"text": "It's not who I am underneath, but what I do that defines me."
-					}
-				]
+				"body": "It's not who I am underneath, but what I do that defines me.",
+				"bodyReduced": "Reduced text.",
+				"_top": 100,
+				"_left": "60%",
+				"_width": "50%",
+				"_graphic": {
+          "_src": "course/en/assets/***.jpg",
+          "ariaLabel": "Aria label"
+        },
+				"_audio": {
+            "_src": "course/en/assets/***.mp3"
+        }
 			},
 			{
-				"src": "spiderman.jpg",
-				"_captions": [
-					{
-						"text": "I'll just be up here..."
-					},
-					{
-						"text": "...Hanging around"
-					}
-				]
+				"body": "I'll just be up here...",
+				"bodyReduced": "Reduced text.",
+				"_top": 100,
+				"_left": "60%",
+				"_width": "50%",
+				"_graphic": {
+          "_src": "course/en/assets/***.jpg",
+          "ariaLabel": "Aria label"
+        },
+				"_audio": {
+            "_src": "course/en/assets/***.mp3"
+        }
 			},
 			{
-				"src": "superman.jpg",
-				"_captions": [
-					{
-						"text": "Anyone can give up..."
-					},
-					{
-						"text": "...It's the easiest thing in the world to do...",
-						"top": 100,
-						"left": "60%",
-						"width": "50%"
-					},
-					{
-						"text": "...But to hold it together when everyone else would understand if you fell apart - that's true strength.",
-						"width": 230
-					}
-				]
+				"body": "Anyone can give up...",
+				"bodyReduced": "Reduced text.",
+				"_top": 100,
+				"_left": "60%",
+				"_width": "50%",
+				"_graphic": {
+          "_src": "course/en/assets/***.jpg",
+          "ariaLabel": "Aria label"
+        },
+				"_audio": {
+            "_src": "course/en/assets/***.mp3"
+        }
 			},
 			{
-				"src": "hulk.jpg",
-				"_captions": [
-					{
-						"text": "Anybody got any paracetamol?"
-					},
-					{
-						"text": "I've got a really bad headache"
-					}
-				]
-			},			{
-				"src": "captain-america.jpg"
+				"body": "Anybody got any paracetamol?",
+				"bodyReduced": "Reduced text.",
+				"_top": 100,
+				"_left": "60%",
+				"_width": "50%",
+				"_graphic": {
+          "_src": "course/en/assets/***.jpg",
+          "ariaLabel": "Aria label"
+        },
+				"_audio": {
+            "_src": "course/en/assets/***.mp3"
+        }
 			}
 		]
 	}
