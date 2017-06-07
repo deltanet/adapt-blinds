@@ -1,73 +1,70 @@
-[
 	{
-		"_id": "c-01",
-		"_parentId": "b-01",
-		"_type": "component",
-		"_component": "blinds",
-		"_classes": "",
-		"_layout": "full",
-		"title": "Blinds",
-		"displayTitle": "Superheroes",
-		"body": "This is an example of Dan's fantastic new adapt-blinds component",
-		"_height": 400,
-		"_setCompletionOn": "allItems",
-		"_items": [
+	    "_id": "c-01",
+	    "_parentId": "b-01",
+	    "_type": "component",
+	    "_component": "blinds",
+	    "_classes": "",
+	    "_layout": "full",
+	    "title": "Blinds",
+	    "displayTitle": "Superheroes",
+	    "body": "This is an example of Dan's fantastic new adapt-blinds component",
+	    "_height": 400,
+	    "_setCompletionOn": "allItems",
+	    "_items": [{
+	        "body": "It's not who I am underneath, but what I do that defines me.",
+	        "bodyReduced": "Reduced text.",
+	        "_top": 100,
+	        "_left": "60%",
+	        "_width": "50%",
+	        "_graphic": {
+	            "_src": "course/en/assets/***.jpg",
+	            "ariaLabel": "Aria label"
+	        },
+	        "_audio": {
+	            "_src": "course/en/assets/***.mp3"
+	        }
+	    },
 			{
-				"body": "It's not who I am underneath, but what I do that defines me.",
-				"bodyReduced": "Reduced text.",
-				"_top": 100,
-				"_left": "60%",
-				"_width": "50%",
-				"_graphic": {
-          "_src": "course/en/assets/***.jpg",
-          "ariaLabel": "Aria label"
-        },
-				"_audio": {
-            "_src": "course/en/assets/***.mp3"
-        }
-			},
+	        "body": "I'll just be up here...",
+	        "bodyReduced": "Reduced text.",
+	        "_top": 100,
+	        "_left": "60%",
+	        "_width": "50%",
+	        "_graphic": {
+	            "_src": "course/en/assets/***.jpg",
+	            "ariaLabel": "Aria label"
+	        },
+	        "_audio": {
+	            "_src": "course/en/assets/***.mp3"
+	        }
+	    },
 			{
-				"body": "I'll just be up here...",
-				"bodyReduced": "Reduced text.",
-				"_top": 100,
-				"_left": "60%",
-				"_width": "50%",
-				"_graphic": {
-          "_src": "course/en/assets/***.jpg",
-          "ariaLabel": "Aria label"
-        },
-				"_audio": {
-            "_src": "course/en/assets/***.mp3"
-        }
-			},
+	        "body": "Anyone can give up...",
+	        "bodyReduced": "Reduced text.",
+	        "_top": 100,
+	        "_left": "60%",
+	        "_width": "50%",
+	        "_graphic": {
+	            "_src": "course/en/assets/***.jpg",
+	            "ariaLabel": "Aria label"
+	        },
+	        "_audio": {
+	            "_src": "course/en/assets/***.mp3"
+	        }
+	    },
 			{
-				"body": "Anyone can give up...",
-				"bodyReduced": "Reduced text.",
-				"_top": 100,
-				"_left": "60%",
-				"_width": "50%",
-				"_graphic": {
-          "_src": "course/en/assets/***.jpg",
-          "ariaLabel": "Aria label"
-        },
-				"_audio": {
-            "_src": "course/en/assets/***.mp3"
-        }
-			},
-			{
-				"body": "Anybody got any paracetamol?",
-				"bodyReduced": "Reduced text.",
-				"_top": 100,
-				"_left": "60%",
-				"_width": "50%",
-				"_graphic": {
-          "_src": "course/en/assets/***.jpg",
-          "ariaLabel": "Aria label"
-        },
-				"_audio": {
-            "_src": "course/en/assets/***.mp3"
-        }
-			}
+	        "body": "Anybody got any paracetamol?",
+	        "bodyReduced": "Reduced text.",
+	        "_top": 100,
+	        "_left": "60%",
+	        "_width": "50%",
+	        "_graphic": {
+	            "_src": "course/en/assets/***.jpg",
+	            "ariaLabel": "Aria label"
+	        },
+	        "_audio": {
+	            "_src": "course/en/assets/***.mp3"
+	        }
+	    }
 		]
 	}
-]
