@@ -7,9 +7,10 @@
     "ariaRegion": {
       "type": "string",
       "required": true,
-      "default": "",
+      "default": "This component contains selectable grid items. Select an item to display the associated text.",
       "inputType": "Text",
-      "validators": []
+      "validators": [],
+      "translatable": true
     }
   },
   "properties":{
