@@ -7,7 +7,8 @@ define([
 
     events: {
         'mouseenter .blinds-item': 'onMouseEnter',
-        'mouseleave .blinds-item': 'onMouseLeave'
+        'mouseleave .blinds-item': 'onMouseLeave',
+        'click .blinds-item': 'onMouseEnter'
     },
 
 		preRender: function() {
@@ -65,6 +66,8 @@ define([
     onMouseEnter: function(event) {
       event.preventDefault();
 
+      this.resetItems();
+
       var $items = this.$(".blinds-item");
       var currentItem = $(event.currentTarget);
 			var _items = this.model.get("_items");
@@ -115,14 +118,12 @@ define([
     onMouseLeave: function(event) {
       event.preventDefault();
 
-      var currentItem = $(event.currentTarget);
-      var wItem = this.itemWidth;
-      var $p = currentItem.find(".blinds-text");
-      var $siblings = currentItem.siblings();
+      this.resetItems();
+    },
 
-      currentItem.outerWidth(wItem);
-      $p.css("opacity", 0);
-      $siblings.outerWidth(wItem);
+    resetItems: function() {
+      this.$(".blinds-text").css("opacity", 0);
+      this.$(".blinds-item").outerWidth(this.itemWidth);
 
       ///// Audio /////
       if (Adapt.course.get('_audio') && Adapt.course.get('_audio')._isEnabled && this.model.has('_audio') && this.model.get('_audio')._isEnabled) {
