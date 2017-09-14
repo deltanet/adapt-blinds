@@ -1,6 +1,6 @@
 # adapt-blinds
 
-**Blinds** is a *presentation component* created by Dan storey for the [Adapt framework](https://github.com/adaptlearning/adapt_framework). 
+**Blinds** is a *presentation component* created by Dan storey for the [Adapt framework](https://github.com/adaptlearning/adapt_framework).
 
 When a learner hovers on one of the images, it widens and the other images narrow accordingly. If set, text will appear and audio will play if enabled.  
 
@@ -42,7 +42,7 @@ The attributes listed below are used in *components.json* to configure **Blinds*
 
 >**_audio** (object): This `_audio` attributes group stores the audio properties for the item. It contains values for **_src**.  
 
->>**_src** (string): File name (including path) of the audio for the item. Path should be relative to the *src* folder. 
+>>**_src** (string): File name (including path) of the audio for the item. Path should be relative to the *src* folder.
 
 ### Accessibility
 Several elements of **Blinds** have been assigned a label using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **Blinds**. These labels are not visible elements. They are utilized by assistive technology such as screen readers. Should the label texts need to be customised, they can be found within the **globals** object in [*properties.schema*](https://github.com/deltanet/adapt-blinds/blob/master/properties.schema).   
@@ -53,7 +53,7 @@ Several elements of **Blinds** have been assigned a label using the [aria-label]
 No known limitations.
 
 ----------------------------
-**Version number:**  1.0  
+**Version number:**  1.0.1  
 **Framework versions supported:**  2.0  
 **Author / maintainer:** Dan Storey / DeltaNet  
 **Accessibility support:** Yes  
