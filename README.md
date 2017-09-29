@@ -28,11 +28,11 @@ The attributes listed below are used in *components.json* to configure **Blinds*
 
 >**bodyReduced** (string): This text displays in the text box when the [audio](https://github.com/deltanet/adapt-audio) text size is set to reduced.  
 
->**_top** (mixed): Each caption can contain optional **top**, **left** and **width** values to position them on the image. Values can be given as a number or string. A number will be interpreted as pixels but a string value may be used to specify a percentage (eg. "20%"). Default is 0. Multiple captions appear 10px below the previous one unless this value is specified.  
+>**_top** (number): Specify the position of the caption from the top in pixels. Default is 10.   
 
->**_left** (mixed): Specify the position of the caption from the left. Value can be given as a number or a string. Default is 0.  
+>**_left** (number): Specify the position of the caption from the left in pixels. Default is 10.  
 
->**_width** (mixed): Specify the max width of the caption. Value can be given as a string or a number. Default behaviour is to fit the width of the text.  
+>**_width** (number): Specify the max width of the caption in pixels. Default is 300.   
 
 >**_graphic** (object): This `_graphic` attributes group stores the graphic properties for the item. It contains values for **_src** and **ariaLabel**.  
 

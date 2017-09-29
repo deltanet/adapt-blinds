@@ -77,28 +77,31 @@
             "translatable": true
           },
           "_top": {
-            "type": "string",
+            "type": "number",
             "required": false,
+            "default": 10,
             "title": "Position - Top",
-            "inputType": "Text",
-            "validators": [],
-            "help": "The vertical position of the text. Can be given as a number or percentage."
+            "inputType": "Number",
+            "validators": ["number"],
+            "help": "The position of the text in pixels from the top."
           },
           "_left": {
-            "type": "string",
+            "type": "number",
             "required": false,
+            "default": 10,
             "title": "Position - Left",
-            "inputType": "Text",
-            "validators": [],
-            "help": "The horizontal position of the text. Can be given as a number or percentage."
+            "inputType": "Number",
+            "validators": ["number"],
+            "help": "The position of the text in pixels from the left."
           },
           "_width": {
-            "type": "string",
+            "type": "number",
             "required": false,
+            "default": 300,
             "title": "Text Width",
-            "inputType": "Text",
-            "validators": [],
-            "help": "The width of the text. Can be given as a number or percentage."
+            "inputType": "Number",
+            "validators": ["number"],
+            "help": "The maximum width of the text in pixels."
           },
           "_graphic": {
             "type": "object",

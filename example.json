@@ -14,9 +14,9 @@
 				{
 	        "body": "It's not who I am underneath, but what I do that defines me.",
 	        "bodyReduced": "Reduced text.",
-	        "_top": 100,
-	        "_left": "60%",
-	        "_width": "50%",
+	        "_top": 10,
+	        "_left": 10,
+	        "_width": 300,
 	        "_graphic": {
 	            "_src": "course/en/assets/***.jpg",
 	            "ariaLabel": "Aria label"
@@ -28,9 +28,9 @@
 			{
 	        "body": "I'll just be up here...",
 	        "bodyReduced": "Reduced text.",
-	        "_top": 100,
-	        "_left": "60%",
-	        "_width": "50%",
+	        "_top": 10,
+	        "_left": 10,
+	        "_width": 300,
 	        "_graphic": {
 	            "_src": "course/en/assets/***.jpg",
 	            "ariaLabel": "Aria label"
@@ -42,9 +42,9 @@
 			{
 	        "body": "Anyone can give up...",
 	        "bodyReduced": "Reduced text.",
-	        "_top": 100,
-	        "_left": "60%",
-	        "_width": "50%",
+	        "_top": 10,
+	        "_left": 10,
+	        "_width": 300,
 	        "_graphic": {
 	            "_src": "course/en/assets/***.jpg",
 	            "ariaLabel": "Aria label"
@@ -56,9 +56,9 @@
 			{
 	        "body": "Anybody got any paracetamol?",
 	        "bodyReduced": "Reduced text.",
-	        "_top": 100,
-	        "_left": "60%",
-	        "_width": "50%",
+	        "_top": 10,
+	        "_left": 10,
+	        "_width": 300,
 	        "_graphic": {
 	            "_src": "course/en/assets/***.jpg",
 	            "ariaLabel": "Aria label"
