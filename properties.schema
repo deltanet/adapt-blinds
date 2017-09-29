@@ -61,16 +61,18 @@
             "required": true,
             "default": "",
             "title": "Item Text",
-            "inputType": "Text",
+            "inputType": "TextArea",
+            "validators": [],
             "help": "Body text displayed in the item.",
             "translatable": true
           },
           "bodyReduced": {
             "type":"string",
-            "required": true,
+            "required": false,
             "default": "",
             "title": "Item Reduced Text",
-            "inputType": "Text",
+            "inputType": "TextArea",
+            "validators": [],
             "help": "Reduced body text displayed in the item.",
             "translatable": true
           },
