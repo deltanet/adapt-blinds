@@ -54,14 +54,18 @@ define([
 		},
 
     calculateWidths: function() {
-			if (this.model.get("_height")) this.$(".blinds-item").height(this.model.get("_height"));
-			var wTotal = this.$(".blinds-container").width();
-			var $items = this.$(".blinds-item");
-			var wItem = wTotal / $items.length;
-			this.itemWidth = wItem;
-			$items.outerWidth(wItem);
+      if (Adapt.device.screenSize !== "small") {
+        this.$(".blinds-item").height(this.model.get("_height"));
+      } else {
+        this.$(".blinds-item").height("auto");
+      }
+      var wTotal = this.$(".blinds-container").width();
+      var $items = this.$(".blinds-item");
+      var wItem = wTotal / $items.length;
+      this.itemWidth = wItem;
+      $items.outerWidth(wItem);
       this.model.set("_width", this.$(".blinds-container").width());
-		},
+    },
 
     onMouseEnter: function(event) {
       event.preventDefault();
