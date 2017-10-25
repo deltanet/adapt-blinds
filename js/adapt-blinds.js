@@ -132,14 +132,10 @@ define([
       ///// End of Audio /////
     },
 
-
-		setStage: function(stage) {
+    setStage: function(stage) {
 			this.model.set("_stage", stage);
-			if (this.model.get("_isDesktop")) {
-				// Set the visited attribute for large screen devices
-				var currentItem = this.getCurrentItem(stage);
-				currentItem._isVisited = true;
-			}
+			var currentItem = this.getCurrentItem(stage);
+			currentItem._isVisited = true;
 			this.evaluateCompletion();
 		},
 
