@@ -137,9 +137,23 @@ define([
     },
 
     setStage: function(stage) {
+      // Reset accessibility
+      for (var i = 0; i < this.model.get('_items').length; i++) {
+        var $item = this.$('.blinds-item').eq(i);
+        var $itemText = $item.find('.blinds-text');
+        $itemText.a11y_on(false);
+      }
+
 			this.model.set("_stage", stage);
 			var currentItem = this.getCurrentItem(stage);
 			currentItem._isVisited = true;
+
+      // Update accessibility
+      var $item = this.$('.blinds-item').eq(stage);
+      var $itemText = $item.find('.blinds-text');
+      $itemText.a11y_on(true);
+      $itemText.a11y_focus();
+
 			this.evaluateCompletion();
 		},
 
