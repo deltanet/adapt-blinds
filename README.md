@@ -22,9 +22,11 @@ The attributes listed below are used in *components.json* to configure **Blinds*
 
 **_height** (number): Height in pixels. Defaults to 500 if this property is not defined.  
 
-**_items** (string): Each item represents one image for this component and contains values for **body**, **bodyReduced**, **_top**, **_left**, **_width**, **_graphic**, and **_audio**.  
+**_items** (string): Each item represents one image for this component and contains values for **title**, **body**, **bodyReduced**, **_top**, **_left**, **_width**, **_graphic**, and **_audio**.  
 
->**body** (string): This text displays in the text box.  
+>**title** (string): This text becomes the item title.  
+
+>**body** (string): This text becomes the item body text.  
 
 >**bodyReduced** (string): This text displays in the text box when the [audio](https://github.com/deltanet/adapt-audio) text size is set to reduced.  
 
@@ -53,7 +55,7 @@ Several elements of **Blinds** have been assigned a label using the [aria-label]
 No known limitations.
 
 ----------------------------
-**Version number:**  1.0.4  
+**Version number:**  1.1.0  
 **Framework versions supported:**  2.0  
 **Author / maintainer:** Dan Storey / DeltaNet  
 **Accessibility support:** Yes  

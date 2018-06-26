@@ -12,8 +12,34 @@
 		.dir-rtl & {
       float: right;
     }
+
 		position: relative;
-		padding: @item-padding;
+
+		border: 3px solid @item-color;
+
+		.blinds-item-overlay {
+			background: @item-color-visited;
+			opacity: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		&:hover {
+      border: 3px solid @item-color-hover !important;
+
+			.blinds-item-overlay {
+				opacity: 0 !important;
+			}
+    }
+
+    &.visited {
+      border: 3px solid @item-color-visited;
+
+			.blinds-item-overlay {
+				opacity: 0.5;
+			}
+    }
+
 		-webkit-background-size: auto 100%;
 		background-size: auto 100%;
 		background-position: center;
@@ -23,6 +49,7 @@
 		-ms-transition: width 0.4s;
 		-o-transition: width 0.4s;
 		transition: width 0.4s;
+
 	}
 
 	.blinds-caption {
@@ -36,12 +63,19 @@
 	.blinds-text {
 		opacity: 0;
 		position: absolute;
-		margin: 0;
+		margin: @item-padding;
 		padding: @component-padding;
 		background: @background-color;
 		color: @font-color;
-		border: @item-border;
-		font-weight: normal;
+	}
+
+	.blinds-item-title {
+		font-weight: @font-weight-bold;
+		padding-bottom: @component-padding;
+	}
+
+	.blinds-item-body {
+		font-weight: @font-weight-regular;
 	}
 }
 

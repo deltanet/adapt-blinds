@@ -51,19 +51,28 @@
     "_items": {
       "type": "array",
       "required": false,
-      "title": "Binds items",
+      "title": "Blinds items",
       "items": {
         "type":"object",
         "required": false,
         "properties": {
+          "title": {
+            "type": "string",
+            "required": false,
+            "default": "",
+            "title": "Item Display Title",
+            "inputType": "Text",
+            "validators": [],
+            "help": "",
+            "translatable": true
+          },
           "body": {
             "type":"string",
-            "required": true,
+            "required": false,
             "default": "",
             "title": "Item Text",
             "inputType": "TextArea",
             "validators": [],
-            "help": "Body text displayed in the item.",
             "translatable": true
           },
           "bodyReduced": {

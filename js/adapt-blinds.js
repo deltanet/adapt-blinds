@@ -145,8 +145,6 @@ define([
       }
 
 			this.model.set("_stage", stage);
-			var currentItem = this.getCurrentItem(stage);
-			currentItem._isVisited = true;
 
       // Update accessibility
       var $item = this.$('.blinds-item').eq(stage);
@@ -154,17 +152,30 @@ define([
       $itemText.a11y_on(true);
       $itemText.a11y_focus();
 
-			this.evaluateCompletion();
+      this.setVisited(stage);
+      $item.addClass("visited");
 		},
 
-		getCurrentItem: function(index) {
-			return this.model.get("_items")[index];
-		},
+    setVisited: function(index) {
+        var item = this.model.get('_items')[index];
+        item._isVisited = true;
+        this.checkCompletionStatus();
+    },
 
-		getVisitedItems: function() {
+    getVisitedItems: function() {
 			return _.filter(this.model.get("_items"), function(item) {
 				return item._isVisited;
 			});
+		},
+
+    checkCompletionStatus: function() {
+        if (this.getVisitedItems().length == this.model.get('_items').length) {
+            this.setCompletionStatus();
+        }
+    },
+
+		getCurrentItem: function(index) {
+			return this.model.get("_items")[index];
 		},
 
 		evaluateCompletion: function() {
