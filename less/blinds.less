@@ -40,6 +40,14 @@
 			}
     }
 
+		&.selected {
+      border: 3px solid @item-color-hover;
+
+			.blinds-item-overlay {
+				opacity: 0 !important;
+			}
+    }
+
 		-webkit-background-size: auto 100%;
 		background-size: auto 100%;
 		background-position: center;
@@ -90,9 +98,12 @@
 	}
 
 	.blinds-text {
-		opacity: 1;
-		position: static;
 		margin: @component-padding;
 		width: auto !important;
+
+		@media all and (max-width: @device-width-small) {
+      position: static !important;
+    }
+
 	}
 }

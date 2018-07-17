@@ -6,9 +6,7 @@ define([
 	var Blinds = ComponentView.extend({
 
     events: {
-        'mouseenter .blinds-item': 'onMouseEnter',
-        'mouseleave .blinds-item': 'onMouseLeave',
-        'click .blinds-item': 'onMouseEnter'
+        'click .blinds-item': 'onClick'
     },
 
 		preRender: function() {
@@ -67,7 +65,7 @@ define([
       this.model.set("_width", this.$(".blinds-container").width());
     },
 
-    onMouseEnter: function(event) {
+    onClick: function(event) {
       event.preventDefault();
 
       this.resetItems();
@@ -96,6 +94,8 @@ define([
 
       this.setStage(itemIndex);
 
+      currentItem.addClass("selected");
+
       var left = _item._left || 0;
       var top = _item._top;
       var width = _item._width || wItem + "px";
@@ -119,15 +119,11 @@ define([
       ///// End of Audio /////
     },
 
-    onMouseLeave: function(event) {
-      event.preventDefault();
-
-      this.resetItems();
-    },
-
     resetItems: function() {
       this.$(".blinds-text").css("opacity", 0);
       this.$(".blinds-item").outerWidth(this.itemWidth);
+
+      this.$(".blinds-item").removeClass("selected");
 
       ///// Audio /////
       if (Adapt.course.get('_audio') && Adapt.course.get('_audio')._isEnabled && this.model.has('_audio') && this.model.get('_audio')._isEnabled) {
