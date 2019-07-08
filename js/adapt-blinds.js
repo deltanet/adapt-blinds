@@ -142,14 +142,19 @@ define([
 
 			this.model.set("_stage", stage);
 
-      // Update accessibility
       var $item = this.$('.blinds-item').eq(stage);
       var $itemText = $item.find('.blinds-text');
-      $itemText.a11y_on(true);
-      $itemText.a11y_focus();
 
       this.setVisited(stage);
       $item.addClass("visited");
+
+      // Update accessibility
+      var a11y = Adapt.config.get('_accessibility');
+      if (!a11y || !a11y._isActive) return;
+      _.delay(function() {
+        $itemText.a11y_on(true);
+        $itemText.a11y_focus();
+      }, 500);
 		},
 
     setVisited: function(index) {
