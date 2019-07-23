@@ -4,17 +4,17 @@
 		<div class="blinds-container">
 			<div class="blinds-items clearfix">
 				{{#each _items}}
-					<button class="base blinds-item{{#if _isVisited}} visited{{/if}}" style="background-image:url('{{_graphic._src}}')" role="button" tabindex="0" aria-label="{{_graphic.ariaLabel}}">
-						<div class="blinds-item-overlay a11y-ignore" aria-hidden="true" tabindex="-1"></div>
+					<button class="base blinds-item{{#if _isVisited}} visited{{/if}}" style="background-image:url('{{_graphic._src}}')" aria-label="{{_graphic.ariaLabel}}">
+						<div class="blinds-item-overlay" aria-hidden="true"></div>
 						<div class="blinds-text not-accessible">
 							{{#if title}}
 							<div class="blinds-item-title">
-								{{{compile_a11y_text title}}}
+								{{{compile title}}}
 							</div>
 							{{/if}}
 							{{#if body}}
 							<div class="blinds-item-body">
-								{{{compile_a11y_text body}}}
+								{{{compile body}}}
 							</div>
 							{{/if}}
 						</div>

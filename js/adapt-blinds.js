@@ -226,9 +226,9 @@ define([
         // Change each items body
         for (var i = 0; i < this.model.get('_items').length; i++) {
           if(value == 0) {
-            this.$('.blinds-text').eq(i).html(this.model.get('_items')[i].body).a11y_text();
+            this.$('.blinds-text').eq(i).html(this.model.get('_items')[i].body);
           } else {
-            this.$('.blinds-text').eq(i).html(this.model.get('_items')[i].bodyReduced).a11y_text();
+            this.$('.blinds-text').eq(i).html(this.model.get('_items')[i].bodyReduced);
           }
         }
       }

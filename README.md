@@ -55,8 +55,8 @@ Several elements of **Blinds** have been assigned a label using the [aria-label]
 No known limitations.
 
 ----------------------------
-**Version number:**  1.2.2  
-**Framework versions supported:**  2.0  
+**Version number:**  2.0.0  
+**Framework versions supported:**  4+  
 **Author / maintainer:** Dan Storey / DeltaNet  
 **Accessibility support:** Yes  
 **RTL support:** Yes  
