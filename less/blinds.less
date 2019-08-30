@@ -1,7 +1,4 @@
-.blinds-inner {
-	* {
-		box-sizing: border-box;
-	}
+.blinds-component {
 
 	.blinds-container {
 		overflow: hidden;
@@ -78,8 +75,8 @@
 	}
 
 	.blinds-item-title {
-		font-weight: @font-weight-bold;
 		padding-bottom: @component-padding;
+		.sub-title;
 	}
 
 	.blinds-item-body {
@@ -94,6 +91,7 @@
 
 	.blinds-item {
 		width: 100% !important;
+		background-size: cover;
 		margin: @item-margin 0;
 	}
 
@@ -104,6 +102,5 @@
 		@media all and (max-width: @device-width-small) {
       position: static !important;
     }
-
 	}
 }
