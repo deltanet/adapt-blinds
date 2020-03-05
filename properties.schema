@@ -141,7 +141,7 @@
             "required": false,
             "title": "Audio",
             "properties": {
-              "_src": {
+              "src": {
                 "type": "string",
                 "required": false,
                 "default": "",

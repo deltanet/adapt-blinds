@@ -23,7 +23,7 @@
 	            "ariaLabel": "Aria label"
 	        },
 	        "_audio": {
-	            "_src": "course/en/assets/***.mp3"
+	            "src": "course/en/assets/***.mp3"
 	        }
 	    },
 			{
@@ -38,7 +38,7 @@
 	            "ariaLabel": "Aria label"
 	        },
 	        "_audio": {
-	            "_src": "course/en/assets/***.mp3"
+	            "src": "course/en/assets/***.mp3"
 	        }
 	    },
 			{
@@ -53,7 +53,7 @@
 	            "ariaLabel": "Aria label"
 	        },
 	        "_audio": {
-	            "_src": "course/en/assets/***.mp3"
+	            "src": "course/en/assets/***.mp3"
 	        }
 	    },
 			{
@@ -68,7 +68,7 @@
 	            "ariaLabel": "Aria label"
 	        },
 	        "_audio": {
-	            "_src": "course/en/assets/***.mp3"
+	            "src": "course/en/assets/***.mp3"
 	        }
 	    }
 		]

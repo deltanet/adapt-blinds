@@ -114,7 +114,7 @@ define([
         // Reset onscreen id
         Adapt.audio.audioClip[this.model.get('_audio')._channel].onscreenID = "";
         // Trigger audio
-        Adapt.trigger('audio:playAudio', _item._audio._src, this.model.get('_id'), this.model.get('_audio')._channel);
+        Adapt.trigger('audio:playAudio', _item._audio.src, this.model.get('_id'), this.model.get('_audio')._channel);
       }
       ///// End of Audio /////
     },
