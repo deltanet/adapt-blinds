@@ -52,17 +52,20 @@ define([
 		},
 
     calculateWidths: function() {
-      if (Adapt.device.screenSize !== "small") {
-        this.$(".blinds-item").height(this.model.get("_height"));
-      } else {
-        this.$(".blinds-item").height("auto");
-      }
+      this.resetItems();
+
       var wTotal = this.$(".blinds-container").width();
       var $items = this.$(".blinds-item");
       var wItem = wTotal / $items.length;
       this.itemWidth = wItem;
       $items.outerWidth(wItem);
       this.model.set("_width", this.$(".blinds-container").width());
+
+      if (Adapt.device.screenSize !== "small") {
+        this.$(".blinds-item").height(this.model.get("_height"));
+      } else {
+        this.$(".blinds-item").height("auto");
+      }
     },
 
     onClick: function(event) {
@@ -121,8 +124,6 @@ define([
 
     resetItems: function() {
       this.$(".blinds-text").css("opacity", 0);
-      this.$(".blinds-item").outerWidth(this.itemWidth);
-
       this.$(".blinds-item").removeClass("selected");
 
       ///// Audio /////
