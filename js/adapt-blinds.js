@@ -10,7 +10,7 @@ define([
     },
 
 		preRender: function() {
-			this.listenTo(Adapt, "device:resize", this.calculateWidths, this);
+			this.listenTo(Adapt, "device:resize", this.resetItems, this);
       this.listenTo(Adapt, "device:changed", this.setDeviceSize, this);
       this.listenTo(Adapt, "audio:changeText", this.replaceText);
 
@@ -52,20 +52,18 @@ define([
 		},
 
     calculateWidths: function() {
-      this.resetItems();
-
-      var wTotal = this.$(".blinds-container").width();
-      var $items = this.$(".blinds-item");
-      var wItem = wTotal / $items.length;
-      this.itemWidth = wItem;
-      $items.outerWidth(wItem);
-      this.model.set("_width", this.$(".blinds-container").width());
-
       if (Adapt.device.screenSize !== "small") {
         this.$(".blinds-item").height(this.model.get("_height"));
       } else {
         this.$(".blinds-item").height("auto");
       }
+
+      var wTotal = this.$(".blinds-container").width();
+      var $items = this.$(".blinds-item");
+      var wItem = 100 / $items.length;
+      this.itemWidth = wItem;
+      $items.outerWidth(wItem+"%");
+      this.model.set("_width", this.$(".blinds-container").width());
     },
 
     onClick: function(event) {
@@ -73,8 +71,13 @@ define([
 
       this.resetItems();
 
-      var $items = this.$(".blinds-item");
       var currentItem = $(event.currentTarget);
+
+      this.showItem(currentItem);
+    },
+
+    showItem: function(currentItem) {
+      var $items = this.$(".blinds-item");
 			var _items = this.model.get("_items");
 			var wItem = this.itemWidth;
 
@@ -86,14 +89,13 @@ define([
       var $siblings = currentItem.siblings();
       var $p = currentItem.find(".blinds-text");
       var wItemNew = wItem;
-      var wSiblingsNew = wItem - ((wItemNew - wItem) / $siblings.length);
+      var wSiblingsNew = 30 / $siblings.length;
 
-      var widthNormal = wTotal / $items.length;
-      var widthOpen = wTotal - (50 * $siblings.length);
+      var widthOpen = 70;
 
       wItemNew = widthOpen;
 
-      currentItem.outerWidth(widthOpen);
+      currentItem.outerWidth(widthOpen+"%");
 
       this.setStage(itemIndex);
 
@@ -101,16 +103,17 @@ define([
 
       var left = _item._left || 0;
       var top = _item._top;
-      var width = _item._width || wItem + "px";
+      var width = _item._width || wItem + "%";
+
+      $p.removeClass('hidden');
 
       $p.css({
-        opacity: 1,
         top: top,
         left: left,
         maxWidth: width
       });
 
-      $siblings.outerWidth(50);
+      $siblings.outerWidth(wSiblingsNew+"%");
 
       ///// Audio /////
       if (Adapt.course.get('_audio') && Adapt.course.get('_audio')._isEnabled && this.model.has('_audio') && this.model.get('_audio')._isEnabled && Adapt.audio.audioClip[this.model.get('_audio')._channel].status==1) {
@@ -123,7 +126,15 @@ define([
     },
 
     resetItems: function() {
-      this.$(".blinds-text").css("opacity", 0);
+      this.$(".blinds-text").addClass('hidden');
+
+      var wTotal = this.$(".blinds-container").width();
+      var $items = this.$(".blinds-item");
+      var wItem = 100 / $items.length;
+      this.itemWidth = wItem;
+      $items.outerWidth(wItem+"%");
+      this.model.set("_width", this.$(".blinds-container").width());
+
       this.$(".blinds-item").removeClass("selected");
 
       ///// Audio /////
