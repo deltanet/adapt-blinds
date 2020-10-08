@@ -52,11 +52,7 @@ define([
 		},
 
     calculateWidths: function() {
-      if (Adapt.device.screenSize !== "small") {
-        this.$(".blinds-item").height(this.model.get("_height"));
-      } else {
-        this.$(".blinds-item").height("auto");
-      }
+      this.$(".blinds-item").height(this.model.get("_height"));
 
       var wTotal = this.$(".blinds-container").width();
       var $items = this.$(".blinds-item");
