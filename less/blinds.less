@@ -1,6 +1,6 @@
-.blinds-component {
+.blinds {
 
-	.blinds-container {
+	.blinds__container {
 		overflow: hidden;
 	}
 
@@ -15,7 +15,7 @@
 		border: 3px solid @item-color;
 
 		.blinds-item-overlay {
-			background: @item-color-visited;
+			background: @item-color;
 			opacity: 0;
 			width: 100%;
 			height: 100%;
@@ -29,15 +29,15 @@
 			}
     }
 
-    &.visited {
-      border: 3px solid @item-color-visited;
+    &.is-visited {
+      border: 3px solid @item-color;
 
 			.blinds-item-overlay {
 				opacity: 0.5;
 			}
     }
 
-		&.selected {
+		&.is-selected {
       border: 3px solid @item-color-hover;
 
 			.blinds-item-overlay {
@@ -68,9 +68,9 @@
 	.blinds-text {
 		position: absolute;
 		margin: @item-padding;
-		padding: @component-padding;
-		background: @background-color;
-		color: @font-color;
+		padding: @component-body-margin;
+		background: @item-color;
+		color: @item-color-inverted;
 
 		&.hidden {
 			display: none;
@@ -78,8 +78,7 @@
 	}
 
 	.blinds-item-title {
-		padding-bottom: @component-padding;
-		.sub-title;
+		padding-bottom: @component-title-margin;
 	}
 
 	.blinds-item-body {
@@ -87,7 +86,7 @@
 	}
 }
 
-.blinds-component.mobile {
+.blinds.mobile {
 	.blinds-items {
 		width: auto;
 	}
@@ -99,7 +98,7 @@
 	}
 
 	.blinds-text {
-		margin: @component-padding;
+		margin: @component-body-margin;
 		width: auto !important;
 	}
 }

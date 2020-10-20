@@ -1,10 +1,10 @@
-<div class="blinds-inner component-inner">
+<div class="blinds__inner component__inner">
 	{{> component this}}
-	<div class="blinds-widget component-widget">
-		<div class="blinds-container">
-			<div class="blinds-items clearfix">
+	<div class="blinds__widget component__widget">
+		<div class="blinds__container">
+			<div class="blinds-items u-clearfix">
 				{{#each _items}}
-					<button class="base blinds-item{{#if _isVisited}} visited{{/if}}" style="background-image:url('{{_graphic._src}}')" aria-label="{{_graphic.ariaLabel}}">
+					<button class="base blinds-item{{#if _isVisited}} is-visited{{/if}}" style="background-image:url('{{_graphic._src}}')" aria-label="{{_graphic.ariaLabel}}">
 						<div class="blinds-item-overlay" aria-hidden="true"></div>
 						<div class="blinds-text hidden not-accessible">
 							{{#if title}}

@@ -1,7 +1,7 @@
 {
     "name": "adapt-blinds",
-    "version": "2.0.3",
-    "framework": ">=4",
+    "version": "3.0.0",
+    "framework": ">=5",
     "homepage": "https://github.com/deltanet/adapt-blinds",
     "issues": "https://github.com/deltanet/adapt-blinds/issues",
     "description": "Horizontally stacked images widen when hovered over, displaying optional text and playing audio.",
@@ -13,5 +13,5 @@
         "adapt-plugin",
         "adapt-component"
     ],
-    "license": "GPLv3"
+    "license": "GPL-3.0"
 }
