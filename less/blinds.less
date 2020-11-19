@@ -1,6 +1,6 @@
 .blinds {
 
-	.blinds__container {
+	&__container {
 		overflow: hidden;
 	}
 
@@ -30,7 +30,7 @@
     }
 
     &.is-visited {
-      border: 3px solid @item-color;
+      border: 3px solid @visited;
 
 			.blinds-item-overlay {
 				opacity: 0.5;
@@ -67,22 +67,28 @@
 
 	.blinds-text {
 		position: absolute;
-		margin: @item-padding;
 		padding: @component-body-margin;
-		background: @item-color;
-		color: @item-color-inverted;
+		background: @font-color-inverted;
+		color: @font-color;
 
-		&.hidden {
+		text-align: left;
+		.dir-rtl & {
+      text-align: right;
+    }
+
+		&.is-hidden {
 			display: none;
 		}
 	}
 
 	.blinds-item-title {
-		padding-bottom: @component-title-margin;
+		padding-bottom: @component-body-margin;
+		.item-title;
 	}
 
 	.blinds-item-body {
-		font-weight: @font-weight-regular;
+		font-size: @body-size;
+		font-weight: @body-weight;
 	}
 }
 

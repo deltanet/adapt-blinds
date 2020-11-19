@@ -101,7 +101,7 @@ define([
         var top = _item._top;
         var width = _item._width || wItem + "%";
 
-        $p.removeClass('hidden');
+        $p.removeClass('is-hidden');
 
         $p.css({
           top: top,
@@ -122,7 +122,7 @@ define([
       },
 
       resetItems: function() {
-        this.$(".blinds-text").addClass('hidden');
+        this.$(".blinds-text").addClass('is-hidden');
 
         var wTotal = this.$(".blinds__container").width();
         var $items = this.$(".blinds-item");
