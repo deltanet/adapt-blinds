@@ -101,7 +101,9 @@ define([
         var top = _item._top;
         var width = _item._width || wItem + "%";
 
-        $p.removeClass('is-hidden');
+        $p.removeClass('is-hidden aria-hidden is-disabled').attr("tabindex", 0)
+        $p.removeAttr('aria-hidden')
+        $p.removeAttr('aria-disabled');
 
         $p.css({
           top: top,
@@ -110,6 +112,8 @@ define([
         });
 
         $siblings.outerWidth(wSiblingsNew+"%");
+
+        if ($p) Adapt.a11y.focusFirst($p);
 
         ///// Audio /////
         if (Adapt.course.get('_audio') && Adapt.course.get('_audio')._isEnabled && this.model.has('_audio') && this.model.get('_audio')._isEnabled && Adapt.audio.audioClip[this.model.get('_audio')._channel].status==1) {
@@ -122,7 +126,7 @@ define([
       },
 
       resetItems: function() {
-        this.$(".blinds-text").addClass('is-hidden');
+        this.$(".blinds-text").addClass('is-hidden').attr('aria-hidden', 'true').attr('aria-disabled', 'true');
 
         var wTotal = this.$(".blinds__container").width();
         var $items = this.$(".blinds-item");
