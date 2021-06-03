@@ -6,7 +6,7 @@
 				{{#each _items}}
 					<button class="blinds-item{{#if _isVisited}} is-visited{{/if}}" style="background-image:url('{{_graphic._src}}')" aria-label="{{_graphic.ariaLabel}}">
 						<div class="blinds-item-overlay" aria-hidden="true"></div>
-						<div class="blinds-text is-hidden">
+						<div class="blinds-text is-hidden" data-index="{{@index}}">
 							{{#if title}}
 							<div class="blinds-item-title">
 								{{{compile title}}}

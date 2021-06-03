@@ -113,7 +113,7 @@ define([
 
         $siblings.outerWidth(wSiblingsNew+"%");
 
-        if ($p) Adapt.a11y.focusFirst($p);
+        this.focusOnBlindElement(itemIndex);
 
         ///// Audio /////
         if (Adapt.course.get('_audio') && Adapt.course.get('_audio')._isEnabled && this.model.has('_audio') && this.model.get('_audio')._isEnabled && Adapt.audio.audioClip[this.model.get('_audio')._channel].status==1) {
@@ -123,6 +123,12 @@ define([
           Adapt.trigger('audio:playAudio', _item._audio._src, this.model.get('_id'), this.model.get('_audio')._channel);
         }
         ///// End of Audio /////
+      },
+
+      focusOnBlindElement: function(itemIndex) {
+        const dataIndexAttr = `[data-index='${itemIndex}']`;
+        const $elementToFocus = this.$(`.blinds-text${dataIndexAttr}`);
+        Adapt.a11y.focusFirst($elementToFocus);
       },
 
       resetItems: function() {
